@@ -7,8 +7,10 @@ export async function POST() {
 </Response>`
 
   return new NextResponse(twiml, {
+    status: 200,
     headers: {
-      'Content-Type': 'text/xml',
+      'Content-Type': 'text/xml; charset=utf-8',
+      'Cache-Control': 'no-cache, no-transform',
     },
   })
 } 
