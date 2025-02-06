@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import twilio from 'twilio'
 import { headers } from 'next/headers'
 
-export async function POST(request: Request) {
+export async function POST() {
   const headersList = await headers()
   const twilioSignature = headersList.get('x-twilio-signature')
   const url = `${process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.BASE_URL}/api/twiml`
