@@ -21,7 +21,7 @@ export async function initiateCall(phoneNumber: string) {
       from: process.env.TWILIO_PHONE_NUMBER ?? ''
     })
 
-    console.log(`Call initiated with SID: ${call.sid}`)
+    console.log(`Call initiated with SID: ${call.sid} and url ${process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.BASE_URL}/api/twiml`)
     return { success: true, message: "Call initiated successfully. You will receive a call shortly." }
   } catch (error) {
     console.error("Error initiating call:", error)
