@@ -14,8 +14,9 @@ export async function initiateCall(phoneNumber: string) {
   try {
     const validatedPhone = phoneSchema.parse(phoneNumber)
 
+    //When the call is made, the call will follow the instructions specified at the url
     const call = await client.calls.create({
-      url: `${process.env.BASE_URL}/api/twiml`,
+      url: `${process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.BASE_URL}/api/twiml`,
       to: validatedPhone,
       from: process.env.TWILIO_PHONE_NUMBER ?? ''
     })
